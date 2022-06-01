@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Portafolio extends Model
 {
+    protected $fillable = [
+        'nombre',
+        'descripcion',
+        'categoria',
+        'imagen',
+        'url'
+    ];
+
     use HasFactory;
 }
