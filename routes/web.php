@@ -1,45 +1,30 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PortafolioController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/',[PortafolioController::class,'datosPortafolio']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('portafolio',[PortafolioController::class,'index'])->name('portafolio')->middleware('auth');
 
-Auth::routes();
+Route::get('portafolio/create',[PortafolioController::class,'create'])->name('create')->middleware('auth');
 
-Route::view('portafolio','portafolio.index')->name('portafolio');
+Route::post('portafolio',[PortafolioController::class,'store'])->name('store')->middleware('auth');
 
-Route::get('portafolio',[PortafolioController::class,'index'])->name('portafolio');
+Route::get('portafolio/{id}',[PortafolioController::class,'show'])->name('show')->middleware('auth');
 
-Route::get('portafolio/create',[PortafolioController::class,'create'])->name('create');
+Route::get('portafolio/edit/{id}',[PortafolioController::class,'edit'])->name('edit')->middleware('auth');
 
-Route::post('portafolio',[PortafolioController::class,'store'])->name('store');
+Route::put('portafolio/{portafolio}',[PortafolioController::class,'update'])->name('update')->middleware('auth');
 
-Route::get('portafolio/{id}',[PortafolioController::class,'show'])->name('show');
-
-Route::get('portafolio/edit/{id}',[PortafolioController::class,'edit'])->name('edit');
-
-Route::put('portafolio/{portafolio}',[PortafolioController::class,'update'])->name('update');
-
-Route::delete('portafolio/{portafolio}',[PortafolioController::class,'destroy'])->name('destroy');
+Route::delete('portafolio/{portafolio}',[PortafolioController::class,'destroy'])->name('destroy')->middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
-
-
