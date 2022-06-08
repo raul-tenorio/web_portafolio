@@ -45,7 +45,7 @@ class PortafolioController extends Controller
             'descripcion'=> request('descripcion'),
             'categoria'=> request('categoria'),
             // 'imagen'=> request('imagen'),
-            'imagen'=> request()->file('imagen')->store('images','public'),
+            'imagen'=> request()->file('imagen')->store('images','dropbox'),
             'url'=> request('video')
         ]);
 
@@ -79,13 +79,13 @@ class PortafolioController extends Controller
         // return redirect()->route('show',$portafolio);
         if(request()->hasFile('imagen'))
         {
-            Storage::disk('public')->delete($portafolio->imagen);
+            Storage::disk('dropbox')->delete($portafolio->imagen);
 
             $portafolio->update([
                 'nombre'=> request('nombre'),
                 'descripcion'=> request('descripcion'),
                 'categoria'=> request('categoria'),
-                'imagen'=> request()->file('imagen')->store('images','public'),
+                'imagen'=> request()->file('imagen')->store('images','dropbox'),
                 'url'=> request('video')
             ]);
         }
@@ -105,7 +105,7 @@ class PortafolioController extends Controller
 
     public function destroy(Portafolio $portafolio)
     {
-        Storage::disk('public')->delete($portafolio->imagen);
+        Storage::disk('dropbox')->delete($portafolio->imagen);
 
         $portafolio ->delete();
         return redirect()->route('portafolio');

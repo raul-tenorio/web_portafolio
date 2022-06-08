@@ -20,7 +20,7 @@
     <!-- <h5 class="card-title">Imagen: {{ $portafolio->imagen }}</h5> -->
     <h5 class="card-title">Vídeo: {{ $portafolio->url }}</h5>
     <h5 class="card-title">Imagen:</h5>
-    <img class="img-fluid img-thumbnail" src="/storage/{{$portafolio->imagen }}" alt="img-proyecto" width="200" height="200">
+    <img class="img-fluid img-thumbnail" src="{{ $portafolio->getUrl()}}" alt="img-proyecto" width="200" height="200">
     <br>
     <br>
     <!-- <a href="" class="btn btn-success btn-sm" >Actualizar</a> -->
