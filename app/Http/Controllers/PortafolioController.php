@@ -79,7 +79,7 @@ class PortafolioController extends Controller
         // return redirect()->route('show',$portafolio);
         if(request()->hasFile('imagen'))
         {
-            Storage::disk('dropbox')->delete($portafolio->imagen);
+            Storage::disk('public')->delete($portafolio->imagen);
 
             $portafolio->update([
                 'nombre'=> request('nombre'),

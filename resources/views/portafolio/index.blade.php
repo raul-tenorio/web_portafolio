@@ -1,3 +1,4 @@
+<!-- FALTA USAR LA DEPENDENCIA :P -->
 @extends('layouts.app')
 
 @section('content')
@@ -18,7 +19,7 @@
             @forelse ($portafolios as $portafolio)
                 <div class="card" style="width: 18rem;">
                     <!-- <img src="/storage/{{ $portafolio->imagen }}" class="card-img-top" alt="..." width="180" height="180"> -->
-                    <img src="{{ $portafolio->getUrl()}}" class="card-img-top" alt="..." width="180" height="180">
+                    <img src="{{$portafolio -> getUrl()}}" class="card-img-top" alt="..." width="180" height="180">
                     <div class="card-body">
                         <p class="card-title font-weight-bold">{{ $portafolio->nombre }}</p>
                         <h5 class="card-title text-truncate">{{ $portafolio->descripcion }}</h5>

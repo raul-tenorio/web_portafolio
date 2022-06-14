@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Portafolio extends Model
 {
-    protected $fillable = [
+    use HasFactory;
+
+    protected $fillable =
+    [
         'nombre',
         'descripcion',
         'categoria',
@@ -15,5 +19,14 @@ class Portafolio extends Model
         'url'
     ];
 
-    use HasFactory;
+
+
+    public function getUrl()
+    {
+        return Storage::disk('dropbox')->url($this->imagen);
+    }
+
+
+
+    
 }
